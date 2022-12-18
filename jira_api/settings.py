@@ -31,10 +31,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 DEBUG = os.environ.get('ENVIRONMENT') == 'development'
 
 ALLOWED_HOSTS = [
-    '*',
+    'localhost',
 ]
 
-CSRF_TRUSTED_ORIGINS = [
+CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
 ]
 
@@ -52,6 +52,7 @@ DJANGO_APPS = [
 SIDE_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders',
 ]
 
 LOCAL_APPS = [
@@ -61,7 +62,7 @@ LOCAL_APPS = [
 
 INSTALLED_APPS = DJANGO_APPS + SIDE_APPS + LOCAL_APPS
 
-MIDDLEWARE = [
+DJANGO_MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -70,6 +71,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SIDE_MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+MIDDLEWARE = DJANGO_MIDDLEWARE + SIDE_MIDDLEWARE
 
 ROOT_URLCONF = 'jira_api.urls'
 

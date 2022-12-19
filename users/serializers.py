@@ -14,6 +14,12 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         return token
 
 
+class UserListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'first_name', 'last_name', )
+
+
 class UserInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

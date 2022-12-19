@@ -58,6 +58,7 @@ SIDE_APPS = [
 LOCAL_APPS = [
     'base.apps.BaseConfig',
     'users.apps.UsersConfig',
+    'tasks.apps.TasksConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + SIDE_APPS + LOCAL_APPS
